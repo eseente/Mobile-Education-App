@@ -10,8 +10,8 @@ import * as Google from 'expo-auth-session/providers/google';
 export default function Login() {
 
   const [request, response, promptAsync] = Google.useAuthRequest({
-    androidClientId: '55959786226-e9frfu2d60hu3lt653blch82e4rhjsnp.apps.googleusercontent.com',
-    expoClientId:'55959786226-llk648p590tvtaoklnv4o89mtjtenecr.apps.googleusercontent.com'
+    androidClientId: '310975068639-04mcbrftdgo7e74b408hv0puqfb6jeqc.apps.googleusercontent.com',
+    expoClientId:'310975068639-ut1miehrb7i45v517qr2elileoil42n2.apps.googleusercontent.com'
    
   });
 
