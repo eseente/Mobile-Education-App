@@ -9,8 +9,8 @@ export default function Slider() {
       },[])
   
       const getSlider=async()=>{
+
         const result=(await GlobalApi.getSlider()).data;
-        
         const resp=result.data.map((item)=>({
             id:item.id,
             name:item.attributes.name,
@@ -24,13 +24,13 @@ export default function Slider() {
         <FlatList
             data={slider}
             horizontal={true}
-            showsHorizontalScrollIndicator={true}
+            showsHorizontalScrollIndicator={false}
             key={slider.id}
             renderItem={({item})=>(
                 <View>
                     <Image source={{uri:item.image}}
-                    style={{width:Dimensions.get('screen').width*0.87
-                    ,height:150,borderRadius:10,marginRight:15}}
+                    style={{width:Dimensions.get('screen').width*0.67
+                    ,height:150,borderRadius:10,marginRight:15, resizeMode: 'cover' }}
                     />
                 </View>
                 

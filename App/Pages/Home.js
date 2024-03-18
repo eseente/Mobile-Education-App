@@ -7,6 +7,7 @@ import SearchBar from '../Components/SearchBar';
 import GlobalApi from '../Shared/GlobalApi';
 import { get } from 'react-native/Libraries/TurboModule/TurboModuleRegistry';
 import Slider from '../Components/Slider'
+import VideoCourseList from '../Components/VideoCourseList';
 
 
 export default function Home() {
@@ -17,7 +18,7 @@ export default function Home() {
         <WelcomeHeader/>
         <SearchBar/>
         <Slider/>
-        
+        <VideoCourseList/>
     </View>
   )
 }
