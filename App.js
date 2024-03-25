@@ -5,6 +5,8 @@ import { AuthContext } from './App/Context/AuthContext';
 import { useEffect, useState } from 'react';
 import Home from './App/Pages/Home';
 import Services from './App/Shared/Services';
+import HomeNavigation from './App/Navigations/HomeNavigation';
+import { NavigationContainer } from '@react-navigation/native';
 
 export default function App() {
 
@@ -22,10 +24,16 @@ export default function App() {
     })
   },[])
   return (
-    <View>
+    <View style={{flex:1}}>
       <AuthContext.Provider 
       value={{userData,setUserData}}>
-      {userData?<Home/>:<Login/>}
+      <NavigationContainer>
+
+        {userData?
+          <HomeNavigation/>
+        :<Login/>}
+      </NavigationContainer>      
+
       </AuthContext.Provider>
     </View>
   );

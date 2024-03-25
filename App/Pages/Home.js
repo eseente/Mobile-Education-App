@@ -8,6 +8,7 @@ import GlobalApi from '../Shared/GlobalApi';
 import { get } from 'react-native/Libraries/TurboModule/TurboModuleRegistry';
 import Slider from '../Components/Slider'
 import VideoCourseList from '../Components/VideoCourseList';
+import CourseList from '../Components/CourseList';
 
 
 export default function Home() {
@@ -19,6 +20,8 @@ export default function Home() {
         <SearchBar/>
         <Slider/>
         <VideoCourseList/>
+        <CourseList type={'basic'} />
+        <CourseList type={'advance'} />
     </View>
   )
 }
