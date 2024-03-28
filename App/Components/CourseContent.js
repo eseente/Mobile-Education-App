@@ -1,5 +1,5 @@
 import { View, Text } from 'react-native'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FlatList } from 'react-native'
 import { Ionicons } from '@expo/vector-icons';
 import Colors from '../Shared/Colors';
@@ -7,16 +7,22 @@ import { TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
  
 export default function CourseContent({course,userProgress,courseType}) {
-
+  const navigation=useNavigation();
+  const [courseTopic, setCourseTopic] = useState([])
+  useEffect(() => {
+    console.log("course: "+course.Topic)
+    setCourseTopic(course.Topic)
+  }, [course])
+  
   return (
     <View style={{marginTop:10}}>
       <Text style={{fontWeight:'bold',
     fontSize:16}}>Course Content</Text>
     <FlatList
     style={{marginTop:10}}
-    data={course?.Topic}
+    data={courseTopic}
     renderItem={({item,index})=>(
-        <View style={{display:'flex', 
+        <TouchableOpacity onPress={()=>navigation.navigate('course-chapter',{courseContent:item.Content})} style={{display:'flex', 
         flexDirection:'row',backgroundColor:Colors.white,marginBottom:5
         ,padding:13,alignItems:'center',borderRadius:5}}>
             <Text style={{fontWeight:'bold',fontSize:20,
@@ -25,7 +31,7 @@ export default function CourseContent({course,userProgress,courseType}) {
             <Ionicons name="play-circle" size={24} 
             style={{position:'absolute', right:10}}
             color={Colors.primary} />
-        </View>
+        </TouchableOpacity>
    )}
     />
     </View>

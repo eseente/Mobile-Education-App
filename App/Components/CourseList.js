@@ -16,13 +16,13 @@ export default function CourseList({type}) {
   
     const getCourseList=async()=>{
       const resp=(await GlobalApi.getCourseList(type)).data;
+      console.log(JSON.stringify(resp)+ " IS PURE DATA")
       const result=resp.data.map((item)=>({
             id:item.id,
             name:item.attributes.Name,
             description:item.attributes.description,
             image:item.attributes.Images.data[0].attributes.url,
             Topic:item.attributes.Topics
-
         })) 
         setCourseList(result); 
         console.log("RESULT COURSE LİST"+JSON.stringify(result));   

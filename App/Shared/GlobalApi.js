@@ -9,7 +9,7 @@ const api = create({
 
 const getSlider =()=>api.get('/sliders?populate=*');
 const getVideoCourse=()=>api.get('/video-courses?populate=*');
-const getCourseList=(type)=>api.get('/courses?filters[type][$eq]='+type+'&populate=*');
+const getCourseList=(type)=>api.get('/courses?filters[type][$eq]='+type+'&populate[Topics][populate]=*&populate[Images][populate]=*');
 
 export default{
     getSlider,

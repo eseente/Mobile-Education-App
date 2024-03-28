@@ -12,7 +12,8 @@ export default function CourseDetails() {
   const navigation=useNavigation();
   useEffect(()=>{
       setCourse(param.courseData)
-  },[])
+      console.log(param.courseData)
+  },[param])
   
   return (
     <View style={{padding:20, paddingTop:30}}> 
