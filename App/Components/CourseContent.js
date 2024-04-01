@@ -12,8 +12,33 @@ export default function CourseContent({course,userProgress,courseType}) {
   useEffect(() => {
     console.log("course: "+course.Topic)
     setCourseTopic(course.Topic)
+    console.log("User Progress in Course content: "+ userProgress)
   }, [course])
   
+  useEffect(()=>{
+    console.log("userProgress",userProgress)
+  })
+ 
+  const checkUserProgress=(contentId)=>{
+    return userProgress.find(item=>item.courseContentId==contentId)
+  }
+  
+  const onChapterPress=(courseContent)=>{
+    if(courseType=='text')
+    {
+    navigation.navigate('course-chapter',
+    {courseContent:courseContent,
+      courseId:course.id, 
+    })
+  }
+  else{
+    navigation.navigate('play-video',
+    {
+      courseContent:courseContent,
+      courseId:course.id, 
+    })
+  }
+  }
   return (
     <View style={{marginTop:10}}>
       <Text style={{fontWeight:'bold',
@@ -22,11 +47,13 @@ export default function CourseContent({course,userProgress,courseType}) {
     style={{marginTop:10}}
     data={courseTopic}
     renderItem={({item,index})=>(
-        <TouchableOpacity onPress={()=>navigation.navigate('course-chapter',{courseContent:item.Content})} style={{display:'flex', 
+        <TouchableOpacity onPress={()=>navigation.navigate('course-chapter',{courseContent:item.Content, courseId:course.id})} style={{display:'flex', 
         flexDirection:'row',backgroundColor:Colors.white,marginBottom:5
         ,padding:13,alignItems:'center',borderRadius:5}}>
+          { checkUserProgress(item.id)?  <Ionicons name="checkmark-circle" size={24} color={Colors.green }
+         style={{marginRight:20}} />:
             <Text style={{fontWeight:'bold',fontSize:20,
-            color:Colors.gray,marginRight:20}}>{index+1}</Text>
+            color:Colors.gray,marginRight:20}}>{index+1}</Text>}
             <Text style={{fontSize:15,fontWeight:'bold'}}>{item.name}</Text>
             <Ionicons name="play-circle" size={24} 
             style={{position:'absolute', right:10}}

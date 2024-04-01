@@ -11,8 +11,14 @@ const getSlider =()=>api.get('/sliders?populate=*');
 const getVideoCourse=()=>api.get('/video-courses?populate=*');
 const getCourseList=(type)=>api.get('/courses?filters[type][$eq]='+type+'&populate[Topics][populate]=*&populate[Images][populate]=*');
 
+const setCourseProgress=(data)=>api.post('/course-progresses',data);
+
+const getCourseProgress=(uid,courseId)=>
+api.get('/course-progresses?&filters[courseId][$eq]='+courseId)
 export default{
     getSlider,
     getVideoCourse,
-    getCourseList
+    getCourseList,
+    setCourseProgress,
+    getCourseProgress
 }
