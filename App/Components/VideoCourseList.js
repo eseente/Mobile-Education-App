@@ -47,7 +47,7 @@ export default function VideoCourseList() {
      showsHorizontalScrollIndicator={false}
      renderItem={({item})=>(
         <TouchableOpacity onPress={()=>onPressCourse(item)}>
-            <Image source={{uri:item.image}} 
+            <Image source={{uri:item.image}}
             style={{width:210,height:120,
             marginRight:10,borderRadius:7}} /> 
         </TouchableOpacity>

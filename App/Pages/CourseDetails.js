@@ -45,7 +45,8 @@ export default function CourseDetails() {
           fontWeight:'bold'}}>{course.name}</Text>
           <Text style={{color:Colors.gray}}>By Mobication</Text>
           <Image source={{uri:course.image}} 
-          style={{height:150,marginTop:10,borderRadius:10}}/>
+          style={{height:150,marginTop:10,borderRadius:10}}
+          resizeMode='contain' />
           <Text style={{marginTop:10, fontWeight:'bold', fontSize:16}}>About Course</Text>
           <Text numberOfLines={4} 
           style={{color:Colors.gray}}>{course.description}</Text>
