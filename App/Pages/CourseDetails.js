@@ -18,9 +18,8 @@ export default function CourseDetails() {
       param.courseData.id?getCourseProgress():null;
   },[param.courseContentId])
 
-  const getCourseProgress=()=>{
-    console.log(userData.id+" is user id, "+ param.courseData.id+" is course id")
-    GlobalApi.getCourseProgress(userData.id,param?.courseData.id)
+  const getCourseProgress=async ()=>{
+    GlobalApi.getCourseProgress(userData.id, param?.courseData.id)
     .then(resp=>{
       if(resp.data.data)
       {

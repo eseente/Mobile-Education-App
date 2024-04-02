@@ -47,7 +47,7 @@ export default function CourseContent({course,userProgress,courseType}) {
     style={{marginTop:10}}
     data={courseTopic}
     renderItem={({item,index})=>(
-        <TouchableOpacity onPress={()=>navigation.navigate('course-chapter',{courseContent:item.Content, courseId:course.id})} style={{display:'flex', 
+        <TouchableOpacity onPress={()=>onChapterPress(item)} style={{display:'flex', 
         flexDirection:'row',backgroundColor:Colors.white,marginBottom:5
         ,padding:13,alignItems:'center',borderRadius:5}}>
           { checkUserProgress(item.id)?  <Ionicons name="checkmark-circle" size={24} color={Colors.green }

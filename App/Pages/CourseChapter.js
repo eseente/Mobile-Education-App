@@ -4,7 +4,6 @@ import { Ionicons } from '@expo/vector-icons';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import Colors from '../Shared/Colors';
 import ProgressBar from '../Components/ProgressBar';
-import Services from '../Shared/Services';
 import GlobalApi from '../Shared/GlobalApi';
 import { AuthContext } from '../Context/AuthContext';
 
@@ -18,11 +17,12 @@ export default function CourseChapter() {
     let chapterRef;
 
     useEffect(()=>{
+        console.log("CONTENT: "+JSON.stringify(param.courseContent.Content))
         setProgress(0);
-        setChapter(param.courseContent)//Content farklı olabilir buna bak sonra
+        setChapter(param.courseContent.Content)
     },[])
 
-    const onClickNext=(index)=>{
+    const onClickNext=async(index)=>{
         setRun(false)
         setProgress(index+1/chapter.length)
         try{
@@ -33,7 +33,7 @@ export default function CourseChapter() {
             let coursePro;
             const data={
                 data:{
-                    uid:userData.id,
+                    uid: userData.id,
                     courseId:param.courseId,
                     courseContentId: param.courseContent.id
                 }
